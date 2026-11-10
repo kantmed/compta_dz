@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
