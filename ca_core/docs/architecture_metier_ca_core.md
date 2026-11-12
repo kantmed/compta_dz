@@ -106,7 +106,7 @@ Conclusion : les personnes physiques et les entités juridiques doivent être re
 
 ### 3.3 `res.users`
 
-Modèle des utilisateurs. Il gère le login, les groupes, la société principale, les sociétés autorisées, les contraintes de cohérence entre société principale et sociétés autorisées, et l'association avec `res.partner`.
+Modèle des utilisateurs. Il gère le login, les groupes, la société principale, les sociétés autorisées, les contraintes de cohérence entre société principale et sociétés autorisées, et l'association avec `res.partner` via `partner_id`. Cette association est technique ; aucune cardinalité métier absolue n'est imposée sans justification vérifiée.
 
 Conclusion : les collaborateurs et administrateurs doivent être des utilisateurs Odoo standard, différenciés par des groupes et des autorisations.
 
@@ -262,6 +262,34 @@ Les opérations sensibles doivent être consignées dans `ca.audit.log`, avec ut
 
 La sécurité n'est pas garantie par la seule définition de l'architecture. Elle devra être validée par l'implémentation des règles `ir.access`, des champs de rattachement, des tests automatisés et des audits de sécurité.
 
+## 5.12 Sécurité actuellement implémentée
+
+La sécurité réellement implémentée dans `ca_core` concerne uniquement `ca.accounting.folder` :
+
+- groupes `ca_core_user`, `ca_core_manager`, `ca_core_admin` ;
+- droits et restrictions par domaine dans `ir.access.csv` ;
+- responsable et collaborateurs ;
+- isolation par société et par dossier pour les tests exécutés ;
+- transitions de statut et immutabilité de la société.
+
+Les factures, écritures, paiements, pièces jointes, rapports, exports, mandats et portail client ne sont pas encore protégés par dossier.
+
+## 5.13 Sécurité cible
+
+La sécurité future devra être développée dans les modules spécialisés :
+
+- accès aux documents comptables ;
+- accès par société ;
+- accès par dossier ;
+- accès par mandat ;
+- droits des cabinets et collaborateurs ;
+- protection des pièces jointes ;
+- protection des exports et rapports ;
+- contrôle des accès au portail client.
+
+Chaque module et chaque modèle devra implémenter et tester ses propres règles.
+
+
 ## 6. Établissements et exploitations agricoles
 
 ### 6.1 Critères de choix
@@ -283,7 +311,7 @@ Les modèles suivants sont envisagés, mais ne sont pas créés à cette étape 
 - `ca.legal.form` : référentiel de formes juridiques, si nécessaire.
 - `ca.referential` : référentiels communs.
 - `ca.audit.log` : journalisation des opérations sensibles.
-- `ca.config` ou extension de `res.config.settings` : paramètres par société.
+- `ca.config` : non développé. La configuration générale utilise le mécanisme natif `res.config.settings`. Une extension éventuelle est conditionnée à un besoin fonctionnel validé.
 
 `res.company`, `res.partner`, `res.users` et `res.groups` restent les modèles natifs de référence.
 
@@ -359,8 +387,9 @@ Vues :
 - filtres et regroupements.
 
 Tests :
-- 48 tests automatisés réussis.
-- couverture des contraintes et de l'isolation multi-société et multi-dossier.
+- 48 tests automatisés exécutés et réussis pour le périmètre de `ca_core`.
+- ces résultats concernent `ca.accounting.folder` et sa sécurité actuellement implémentée.
+- ils ne valident pas les futurs modules comptables, mandats ou portails.
 
 Limites :
 - pas de gestion des cabinets et mandats ;

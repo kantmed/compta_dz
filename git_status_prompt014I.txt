@@ -1,0 +1,12 @@
+ M ca_core/docs/architecture_metier_ca_core.md
+ M ca_core/docs/decisions_architecture_ca_core.md
+ M ca_core/docs/diagramme_architecture_ca_core.mmd
+?? ca_architecture_prompt014H_audit.zip
+?? git_status_prompt014H.txt
+?? git_status_prompt014I.txt
+?? inventaire_prompt014H.txt
+?? inventaire_prompt014I.txt
+?? odoo20-server
+?? odoo20-server.pub
+?? rapport_prompt_014H.md
+?? rapport_prompt_014I.md

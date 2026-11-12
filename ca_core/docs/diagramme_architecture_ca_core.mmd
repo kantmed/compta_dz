@@ -44,7 +44,7 @@ classDiagram
     ResCompanyClient "1" --> "0..*" CaAccountingFolder : owns
     ResCompanyClient "1" --> "0..*" ResCompanyClient : branches
     ResPartner "1" --> "0..1" ResCompanyClient : partner
-    ResUser "1" --> "1" ResPartner : partner_id
+    ResUser --> ResPartner : partner_id
     ResUser "0..*" --> "0..*" ResCompanyClient : allowed companies
     CaAccountingFolder "0..*" --> "1" ResUser : manager
     CaAccountingFolder "0..*" --> "0..*" ResUser : collaborators

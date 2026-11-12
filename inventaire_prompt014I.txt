@@ -1,0 +1,13 @@
+Fichiers modifiés :
+- ca_core/docs/architecture_metier_ca_core.md
+- ca_core/docs/decisions_architecture_ca_core.md
+- ca_core/docs/diagramme_architecture_ca_core.mmd
+
+Fichiers créés :
+- rapport_prompt_014I.md
+- inventaire_prompt014I.txt
+- git_status_prompt014I.txt
+- ca_architecture_prompt014I_audit.zip
+
+Fichiers supprimés :
+- aucun

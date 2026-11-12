@@ -25,6 +25,23 @@
 | Distinguer société juridique, établissement, site et dossier | Clarifie les périmètres |
 | Combiner isolation par société et par dossier | Protège les documents natifs |
 
+## 2.4 Sécurité actuellement implémentée
+
+- Groupes `ca_core_user`, `ca_core_manager`, `ca_core_admin`.
+- Règles `ir.access` pour `ca.accounting.folder`.
+- Isolation par société et par dossier pour les tests exécutés.
+- Responsable et collaborateurs.
+- Immutabilité de `company_id`.
+
+## 2.5 Sécurité cible
+
+- Protection des factures, écritures, paiements, pièces jointes, rapports et exports.
+- Isolation par mandat.
+- Droits des cabinets et collaborateurs.
+- Protection du portail client.
+- Chaque module spécialisé devra implémenter et tester ses propres règles.
+
+
 ## 3. Hypothèses à confirmer
 
 - La représentation finale du cabinet par `res.company`.
@@ -56,13 +73,14 @@
 | `ca.referential` | Reporté |
 | `ca.establishment` | Conditionnel |
 | `ca.legal.form` | Fusionné dans `ca.referential` |
-| `ca.config` | Extension de `res.config.settings` |
+| `ca.config` | Non développé |
 
 ## 6. Tests
 
-- 48 tests automatisés exécutés pour `ca_core`.
+- 48 tests automatisés exécutés pour le périmètre de `ca_core`.
 - 0 échec.
 - 0 erreur.
+- Ces résultats concernent le modèle actuellement développé et ne valident pas les futurs modules comptables.
 
 Ces résultats concernent `ca_core` et ne constituent pas une validation de la sécurité des futurs modules comptables.
 
