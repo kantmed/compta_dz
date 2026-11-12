@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <record id="seq_ca_mandate" model="ir.sequence">
+            <field name="name">Accounting Mandate</field>
+            <field name="code">ca.mandate</field>
+            <field name="prefix">MAN/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

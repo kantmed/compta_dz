@@ -1,0 +1,25 @@
+{
+    'name': 'Comptabilité Algérienne — Collaboration',
+    'version': '20.0.1.0.0',
+    'category': 'Accounting',
+    'summary': 'Collaboration entre cabinets, sociétés clientes et collaborateurs',
+    'license': 'LGPL-3',
+    'depends': ['base', 'ca_core', 'ca_accounting_folder', 'ca_company_profile', 'ca_audit_log', 'ca_mandate'],
+    'data': [
+        'data/ir_sequence.xml',
+        'security/ir.access.csv',
+        'views/collaboration_views.xml',
+        'views/collaboration_task_views.xml',
+        'views/collaboration_document_request_views.xml',
+        'views/collaboration_message_views.xml',
+        'views/dashboard_views.xml',
+        'views/menus.xml',
+    ],
+    'i18n': [
+        'i18n/fr.po',
+        'i18n/ar.po',
+    ],
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+}

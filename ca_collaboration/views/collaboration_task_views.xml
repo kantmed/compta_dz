@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_collaboration_task_list" model="ir.ui.view">
+        <field name="name">ca.collaboration.task.list</field>
+        <field name="model">ca.collaboration.task</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="collaboration_id"/>
+                <field name="assigned_to"/>
+                <field name="priority"/>
+                <field name="state"/>
+                <field name="date_deadline"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ca_collaboration_task_form" model="ir.ui.view">
+        <field name="name">ca.collaboration.task.form</field>
+        <field name="model">ca.collaboration.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object" string="Start" invisible="state not in ('new', 'todo')"/>
+                    <button name="action_wait" type="object" string="Wait" invisible="state not in ('todo', 'in_progress')"/>
+                    <button name="action_done" type="object" string="Done" invisible="state not in ('in_progress', 'waiting')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done', 'cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,todo,in_progress,waiting,done,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="reference" readonly="1"/>
+                        <field name="name"/>
+                        <field name="collaboration_id"/>
+                        <field name="assigned_to"/>
+                        <field name="priority"/>
+                        <field name="category"/>
+                        <field name="date_deadline"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="document_ids" widget="many2many_binary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ca_collaboration_task_search" model="ir.ui.view">
+        <field name="name">ca.collaboration.task.search</field>
+        <field name="model">ca.collaboration.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="collaboration_id"/>
+                <field name="assigned_to"/>
+                <filter string="My Tasks" name="my_tasks" domain="[('assigned_to', '=', uid)]"/>
+                <filter string="Open" name="open" domain="[('state', 'not in', ('done', 'cancelled'))]"/>
+                <filter string="Overdue" name="overdue" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d')), ('state', 'not in', ('done', 'cancelled'))]"/>
+                <group>
+                    <filter string="Collaboration" name="group_collaboration" context="{'group_by': 'collaboration_id'}"/>
+                    <filter string="Assignee" name="group_assignee" context="{'group_by': 'assigned_to'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ca_collaboration_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">ca.collaboration.task</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

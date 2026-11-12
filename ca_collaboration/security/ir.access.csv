@@ -1,0 +1,24 @@
+id,name,model_id,group_id/id,operation,domain
+access_ca_collaboration_user,ca.collaboration user,ca.collaboration,ca_core.group_ca_core_user,r,"[('company_id', 'in', company_ids), '|', ('firm_manager_id', '=', user.id), ('authorized_member_ids', 'in', user.id)]"
+access_ca_collaboration_manager,ca.collaboration manager,ca.collaboration,ca_core.group_ca_core_manager,crud,"[('company_id', 'in', company_ids)]"
+access_ca_collaboration_admin,ca.collaboration admin,ca.collaboration,ca_core.group_ca_core_admin,crud,"[('company_id', 'in', company_ids)]"
+
+access_ca_collaboration_member_user,ca.collaboration.member user,ca.collaboration.member,ca_core.group_ca_core_user,r,"[('collaboration_id.company_id', 'in', company_ids), ('user_id', '=', user.id)]"
+access_ca_collaboration_member_manager,ca.collaboration.member manager,ca.collaboration.member,ca_core.group_ca_core_manager,crud,"[('collaboration_id.company_id', 'in', company_ids)]"
+access_ca_collaboration_member_admin,ca.collaboration.member admin,ca.collaboration.member,ca_core.group_ca_core_admin,crud,"[('collaboration_id.company_id', 'in', company_ids)]"
+
+access_ca_collaboration_task_user,ca.collaboration.task user,ca.collaboration.task,ca_core.group_ca_core_user,r,"[('company_id', 'in', company_ids), '|', ('assigned_to', '=', user.id), ('collaboration_id.authorized_member_ids', 'in', user.id)]"
+access_ca_collaboration_task_manager,ca.collaboration.task manager,ca.collaboration.task,ca_core.group_ca_core_manager,crud,"[('company_id', 'in', company_ids)]"
+access_ca_collaboration_task_admin,ca.collaboration.task admin,ca.collaboration.task,ca_core.group_ca_core_admin,crud,"[('company_id', 'in', company_ids)]"
+
+access_ca_collaboration_document_request_user,ca.collaboration.document.request user,ca.collaboration.document.request,ca_core.group_ca_core_user,r,"[('company_id', 'in', company_ids), '|', ('requester_id', '=', user.id), ('recipient_id', '=', user.id)]"
+access_ca_collaboration_document_request_manager,ca.collaboration.document.request manager,ca.collaboration.document.request,ca_core.group_ca_core_manager,crud,"[('company_id', 'in', company_ids)]"
+access_ca_collaboration_document_request_admin,ca.collaboration.document.request admin,ca.collaboration.document.request,ca_core.group_ca_core_admin,crud,"[('company_id', 'in', company_ids)]"
+
+access_ca_collaboration_message_user,ca.collaboration.message user,ca.collaboration.message,ca_core.group_ca_core_user,r,"[('collaboration_id.company_id', 'in', company_ids), '|', ('author_id', '=', user.id), ('recipient_ids', 'in', user.id)]"
+access_ca_collaboration_message_manager,ca.collaboration.message manager,ca.collaboration.message,ca_core.group_ca_core_manager,crud,"[('collaboration_id.company_id', 'in', company_ids)]"
+access_ca_collaboration_message_admin,ca.collaboration.message admin,ca.collaboration.message,ca_core.group_ca_core_admin,crud,"[('collaboration_id.company_id', 'in', company_ids)]"
+access_ca_collaboration_attachment_restriction,ca.collaboration attachment restriction,ir.attachment,,crud,"['|', ('ca_collaboration_id', '=', False), '&', ('ca_collaboration_id.company_id', 'in', company_ids), '|', ('ca_collaboration_id.firm_manager_id', '=', user.id), ('ca_collaboration_id.authorized_member_ids', 'in', user.id)]"
+access_ca_collaboration_dashboard_user,ca.collaboration.dashboard user,ca.collaboration.dashboard,ca_core.group_ca_core_user,r,
+access_ca_collaboration_dashboard_manager,ca.collaboration.dashboard manager,ca.collaboration.dashboard,ca_core.group_ca_core_manager,r,
+access_ca_collaboration_dashboard_admin,ca.collaboration.dashboard admin,ca.collaboration.dashboard,ca_core.group_ca_core_admin,r,

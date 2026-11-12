@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <record id="mission_bookkeeping" model="ca.mandate.mission">
+            <field name="code">BOOKKEEPING</field>
+            <field name="name">Tenue comptable</field>
+            <field name="name_ar">المسك المحاسبي</field>
+            <field name="name_en">Bookkeeping</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="mission_review" model="ca.mandate.mission">
+            <field name="code">REVIEW</field>
+            <field name="name">Révision comptable</field>
+            <field name="name_ar">المراجعة المحاسبية</field>
+            <field name="name_en">Accounting review</field>
+            <field name="sequence">20</field>
+        </record>
+        <record id="mission_tax" model="ca.mandate.mission">
+            <field name="code">TAX</field>
+            <field name="name">Déclarations fiscales</field>
+            <field name="name_ar">التصريحات الضريبية</field>
+            <field name="name_en">Tax filings</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="mission_financial_statements" model="ca.mandate.mission">
+            <field name="code">FINSTAT</field>
+            <field name="name">États financiers</field>
+            <field name="name_ar">القوائم المالية</field>
+            <field name="name_en">Financial statements</field>
+            <field name="sequence">40</field>
+        </record>
+        <record id="mission_advisory" model="ca.mandate.mission">
+            <field name="code">ADVISORY</field>
+            <field name="name">Conseil comptable</field>
+            <field name="name_ar">الاستشارات المحاسبية</field>
+            <field name="name_en">Accounting advisory</field>
+            <field name="sequence">50</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_collaboration_list" model="ir.ui.view">
+        <field name="name">ca.collaboration.list</field>
+        <field name="model">ca.collaboration</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="firm_id"/>
+                <field name="mandate_id"/>
+                <field name="folder_id"/>
+                <field name="state"/>
+                <field name="open_task_count"/>
+                <field name="pending_request_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ca_collaboration_form" model="ir.ui.view">
+        <field name="name">ca.collaboration.form</field>
+        <field name="model">ca.collaboration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'"/>
+                    <button name="action_activate" type="object" string="Activate" invisible="state != 'pending'"/>
+                    <button name="action_suspend" type="object" string="Suspend" invisible="state != 'active'"/>
+                    <button name="action_resume" type="object" string="Resume" invisible="state != 'suspended'"/>
+                    <button name="action_done" type="object" string="Done" invisible="state not in ('active', 'suspended')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state not in ('draft', 'pending', 'active', 'suspended')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspended,done,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference" readonly="1"/>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                            <field name="firm_id"/>
+                            <field name="mandate_id" domain="[('company_id', '=', company_id), ('firm_id', '=', firm_id)]"/>
+                            <field name="folder_id" domain="[('company_id', '=', company_id)]"/>
+                        </group>
+                        <group>
+                            <field name="client_manager_id"/>
+                            <field name="firm_manager_id"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page string="Members">
+                            <field name="member_ids"/>
+                        </page>
+                        <page string="Tasks">
+                            <field name="task_ids"/>
+                        </page>
+                        <page string="Document Requests">
+                            <field name="request_ids"/>
+                        </page>
+                        <page string="Messages">
+                            <field name="message_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ca_collaboration_search" model="ir.ui.view">
+        <field name="name">ca.collaboration.search</field>
+        <field name="model">ca.collaboration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="company_id"/>
+                <field name="firm_id"/>
+                <field name="mandate_id"/>
+                <field name="folder_id"/>
+                <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="My Collaborations" name="my" domain="[('member_ids.user_id', 'in', uid)]"/>
+                <group>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="Firm" name="group_firm" context="{'group_by': 'firm_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ca_collaboration" model="ir.actions.act_window">
+        <field name="name">Collaborations</field>
+        <field name="res_model">ca.collaboration</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

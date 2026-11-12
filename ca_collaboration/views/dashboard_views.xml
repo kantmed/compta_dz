@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_collaboration_dashboard_form" model="ir.ui.view">
+        <field name="name">ca.collaboration.dashboard.form</field>
+        <field name="model">ca.collaboration.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="active_collaboration_count" readonly="1"/>
+                        <field name="todo_task_count" readonly="1"/>
+                        <field name="overdue_task_count" readonly="1"/>
+                        <field name="urgent_task_count" readonly="1"/>
+                        <field name="pending_request_count" readonly="1"/>
+                        <field name="received_request_count" readonly="1"/>
+                        <field name="unread_message_count" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ca_collaboration_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">ca.collaboration.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

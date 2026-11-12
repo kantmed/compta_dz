@@ -1,0 +1,11 @@
+id,name,model_id,group_id/id,operation,domain
+access_ca_mandate_user,ca.mandate user,ca.mandate,ca_core.group_ca_core_user,r,"[('company_id', 'in', company_ids), '|', ('manager_id', '=', user.id), ('collaborator_ids.user_id', 'in', user.id)]"
+access_ca_mandate_manager,ca.mandate manager,ca.mandate,ca_core.group_ca_core_manager,crud,"[('company_id', 'in', company_ids)]"
+access_ca_mandate_admin,ca.mandate admin,ca.mandate,ca_core.group_ca_core_admin,crud,"[('company_id', 'in', company_ids)]"
+access_ca_mandate_mission_user,ca.mandate.mission user,ca.mandate.mission,ca_core.group_ca_core_user,r,
+access_ca_mandate_mission_manager,ca.mandate.mission manager,ca.mandate.mission,ca_core.group_ca_core_manager,crud,
+access_ca_mandate_mission_admin,ca.mandate.mission admin,ca.mandate.mission,ca_core.group_ca_core_admin,crud,
+access_ca_mandate_collaborator_user,ca.mandate.collaborator user,ca.mandate.collaborator,ca_core.group_ca_core_user,r,"[('mandate_id.company_id', 'in', company_ids), ('user_id', '=', user.id)]"
+access_ca_mandate_collaborator_manager,ca.mandate.collaborator manager,ca.mandate.collaborator,ca_core.group_ca_core_manager,crud,"[('mandate_id.company_id', 'in', company_ids)]"
+access_ca_mandate_collaborator_admin,ca.mandate.collaborator admin,ca.mandate.collaborator,ca_core.group_ca_core_admin,crud,"[('mandate_id.company_id', 'in', company_ids)]"
+access_ca_mandate_document_restriction,ca.mandate document restriction,ir.attachment,,crud,"['|', ('ca_mandate_id', '=', False), '&', ('ca_mandate_id.company_id', 'in', company_ids), '|', ('ca_mandate_id.manager_id', '=', user.id), ('ca_mandate_id.collaborator_ids.user_id', 'in', user.id)]"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ca_collaboration_root" name="Collaboration" parent="ca_core.menu_ca_core_root" sequence="40"/>
+    <menuitem id="menu_ca_collaboration_dashboard" name="Tableau de bord" parent="menu_ca_collaboration_root" action="action_ca_collaboration_dashboard" sequence="5"/>
+    <menuitem id="menu_ca_collaboration" name="Collaborations" parent="menu_ca_collaboration_root" action="action_ca_collaboration" sequence="10"/>
+    <menuitem id="menu_ca_collaboration_task" name="Tasks" parent="menu_ca_collaboration_root" action="action_ca_collaboration_task" sequence="20"/>
+    <menuitem id="menu_ca_collaboration_document_request" name="Document Requests" parent="menu_ca_collaboration_root" action="action_ca_collaboration_document_request" sequence="30"/>
+    <menuitem id="menu_ca_collaboration_message" name="Messages" parent="menu_ca_collaboration_root" action="action_ca_collaboration_message" sequence="40"/>
+</odoo>

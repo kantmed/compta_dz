@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ca_mandate_root" name="Mandats" parent="ca_core.menu_ca_core_root" sequence="30"/>
+    <menuitem id="menu_ca_mandate" name="Mandats" parent="menu_ca_mandate_root" action="action_ca_mandate" sequence="10"/>
+    <menuitem id="menu_ca_mandate_mission" name="Missions" parent="menu_ca_mandate_root" action="ca_mandate.action_ca_mandate_mission" sequence="20"/>
+</odoo>
