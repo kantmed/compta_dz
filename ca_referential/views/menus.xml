@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ca_referential_root" name="Référentiels" parent="ca_core.menu_ca_core_root" sequence="20"/>
+    <menuitem id="menu_ca_legal_form" name="Formes juridiques" parent="menu_ca_referential_root" action="action_ca_legal_form" sequence="10"/>
+    <menuitem id="menu_ca_activity_category" name="Catégories d'activité" parent="menu_ca_referential_root" action="action_ca_activity_category" sequence="20"/>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <record id="activity_agriculture" model="ca.activity.category">
+            <field name="code">AGRI</field>
+            <field name="name">Agriculture</field>
+            <field name="name_ar">الزراعة</field>
+            <field name="name_en">Agriculture</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="activity_industry" model="ca.activity.category">
+            <field name="code">IND</field>
+            <field name="name">Industrie</field>
+            <field name="name_ar">الصناعة</field>
+            <field name="name_en">Industry</field>
+            <field name="sequence">20</field>
+        </record>
+        <record id="activity_commerce" model="ca.activity.category">
+            <field name="code">COM</field>
+            <field name="name">Commerce</field>
+            <field name="name_ar">التجارة</field>
+            <field name="name_en">Commerce</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="activity_services" model="ca.activity.category">
+            <field name="code">SERV</field>
+            <field name="name">Services</field>
+            <field name="name_ar">الخدمات</field>
+            <field name="name_en">Services</field>
+            <field name="sequence">40</field>
+        </record>
+        <record id="activity_btp" model="ca.activity.category">
+            <field name="code">BTP</field>
+            <field name="name">Bâtiment et travaux publics</field>
+            <field name="name_ar">البناء والأشغال العامة</field>
+            <field name="name_en">Construction and public works</field>
+            <field name="sequence">50</field>
+        </record>
+        <record id="activity_transport" model="ca.activity.category">
+            <field name="code">TRANS</field>
+            <field name="name">Transport</field>
+            <field name="name_ar">النقل</field>
+            <field name="name_en">Transport</field>
+            <field name="sequence">60</field>
+        </record>
+    </data>
+</odoo>

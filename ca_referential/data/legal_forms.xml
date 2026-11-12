@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <record id="legal_form_ei" model="ca.legal.form">
+            <field name="code">EI</field>
+            <field name="name">Entreprise individuelle</field>
+            <field name="name_ar">مؤسسة فردية</field>
+            <field name="name_en">Sole proprietorship</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="legal_form_eurl" model="ca.legal.form">
+            <field name="code">EURL</field>
+            <field name="name">EURL</field>
+            <field name="name_ar">شركة ذات مسؤولية محدودة أحادية Personne</field>
+            <field name="name_en">Single-member limited liability company</field>
+            <field name="sequence">20</field>
+        </record>
+        <record id="legal_form_sarl" model="ca.legal.form">
+            <field name="code">SARL</field>
+            <field name="name">SARL</field>
+            <field name="name_ar">شركة ذات مسؤولية محدودة</field>
+            <field name="name_en">Limited liability company</field>
+            <field name="sequence">30</field>
+        </record>
+        <record id="legal_form_spa" model="ca.legal.form">
+            <field name="code">SPA</field>
+            <field name="name">SPA</field>
+            <field name="name_ar">شركة بالأسهم</field>
+            <field name="name_en">Joint-stock company</field>
+            <field name="sequence">40</field>
+        </record>
+        <record id="legal_form_snc" model="ca.legal.form">
+            <field name="code">SNC</field>
+            <field name="name">SNC</field>
+            <field name="name_ar">شركة تضامن</field>
+            <field name="name_en">General partnership</field>
+            <field name="sequence">50</field>
+        </record>
+        <record id="legal_form_scs" model="ca.legal.form">
+            <field name="code">SCS</field>
+            <field name="name">SCS</field>
+            <field name="name_ar">شركة توصية بسيطة</field>
+            <field name="name_en">Limited partnership</field>
+            <field name="sequence">60</field>
+        </record>
+        <record id="legal_form_sca" model="ca.legal.form">
+            <field name="code">SCA</field>
+            <field name="name">SCA</field>
+            <field name="name_ar">شركة توصية بالأسهم</field>
+            <field name="name_en">Partnership limited by shares</field>
+            <field name="sequence">70</field>
+        </record>
+        <record id="legal_form_eai" model="ca.legal.form">
+            <field name="code">EAI</field>
+            <field name="name">Exploitation agricole individuelle</field>
+            <field name="name_ar">استغلال فلاحي فردي</field>
+            <field name="name_en">Individual agricultural holding</field>
+            <field name="sequence">80</field>
+        </record>
+        <record id="legal_form_eac" model="ca.legal.form">
+            <field name="code">EAC</field>
+            <field name="name">Exploitation agricole collective</field>
+            <field name="name_ar">استغلال فلاحي جماعي</field>
+            <field name="name_en">Collective agricultural holding</field>
+            <field name="sequence">90</field>
+        </record>
+    </data>
+</odoo>

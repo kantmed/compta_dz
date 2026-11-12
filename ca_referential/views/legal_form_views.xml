@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_legal_form_list" model="ir.ui.view">
+        <field name="name">ca.legal.form.list</field>
+        <field name="model">ca.legal.form</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="name_ar"/>
+                <field name="name_en"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ca_legal_form_form" model="ir.ui.view">
+        <field name="name">ca.legal.form.form</field>
+        <field name="model">ca.legal.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="name_ar"/>
+                        <field name="name_en"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="regulatory_reference"/>
+                        <field name="validity_start"/>
+                        <field name="validity_end"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ca_legal_form_search" model="ir.ui.view">
+        <field name="name">ca.legal.form.search</field>
+        <field name="model">ca.legal.form</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="name_ar"/>
+                <field name="name_en"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ca_legal_form" model="ir.actions.act_window">
+        <field name="name">Legal Forms</field>
+        <field name="res_model">ca.legal.form</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
