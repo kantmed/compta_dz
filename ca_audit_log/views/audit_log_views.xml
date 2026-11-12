@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_audit_log_list" model="ir.ui.view">
+        <field name="name">ca.audit.log.list</field>
+        <field name="model">ca.audit.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="date"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <field name="folder_id"/>
+                <field name="model_name"/>
+                <field name="operation"/>
+                <field name="sensitivity"/>
+                <field name="record_name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ca_audit_log_form" model="ir.ui.view">
+        <field name="name">ca.audit.log.form</field>
+        <field name="model">ca.audit.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="date" readonly="1"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="folder_id" readonly="1"/>
+                        <field name="model_name" readonly="1"/>
+                        <field name="res_id" readonly="1"/>
+                        <field name="record_name" readonly="1"/>
+                        <field name="operation" readonly="1"/>
+                        <field name="sensitivity" readonly="1"/>
+                        <field name="ip_address" readonly="1"/>
+                        <field name="origin" readonly="1"/>
+                        <field name="correlation_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="old_values" readonly="1"/>
+                        <field name="new_values" readonly="1"/>
+                        <field name="description" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ca_audit_log_search" model="ir.ui.view">
+        <field name="name">ca.audit.log.search</field>
+        <field name="model">ca.audit.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="model_name"/>
+                <field name="record_name"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <field name="folder_id"/>
+                <filter string="High sensitivity" name="high" domain="[('sensitivity', 'in', ('high', 'critical'))]"/>
+                <group>
+                    <filter string="Model" name="group_model" context="{'group_by': 'model_name'}"/>
+                    <filter string="User" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="Operation" name="group_operation" context="{'group_by': 'operation'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ca_audit_log" model="ir.actions.act_window">
+        <field name="name">Audit Log</field>
+        <field name="res_model">ca.audit.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_ca_audit_log" name="Journal d'audit"
+              parent="ca_core.menu_ca_core_root" action="action_ca_audit_log" sequence="20"/>
+</odoo>

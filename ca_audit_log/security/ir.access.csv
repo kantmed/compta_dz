@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_ca_audit_log_user,ca.audit.log user,ca.audit.log,ca_audit_log.group_ca_audit_log_user,r,"[('user_id', '=', user.id)]"
+access_ca_audit_log_manager,ca.audit.log manager,ca.audit.log,ca_audit_log.group_ca_audit_log_manager,r,"[('company_id', 'in', company_ids)]"
+access_ca_audit_log_admin,ca.audit.log admin,ca.audit.log,ca_audit_log.group_ca_audit_log_admin,r,

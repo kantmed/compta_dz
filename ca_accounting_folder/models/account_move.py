@@ -20,7 +20,9 @@ class AccountMove(models.Model):
 
     def _check_folder_change_allowed(self):
         for move in self:
-            if move.state == "posted" and not self.env.context.get("ca_allow_folder_change"):
+            if move.state == "posted" and not (
+                self.env.su or self.env.user.has_group("ca_core.group_ca_core_admin")
+            ) and not self.env.context.get("ca_allow_folder_change"):
                 raise ValidationError(_("The accounting folder cannot be changed after posting."))
 
     def write(self, vals):
