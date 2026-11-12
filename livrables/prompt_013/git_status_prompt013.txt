@@ -1,0 +1,14 @@
+ M ca_core/__manifest__.py
+ M ca_core/docs/architecture_metier_ca_core.md
+ M ca_core/docs/decisions_architecture.md
+ M ca_core/models/__init__.py
+ M rapport_prompt_011.md
+?? ca_core/models/accounting_folder.py
+?? ca_core/security/
+?? ca_core/tests/
+?? ca_core/views/
+?? livrables/
+?? rapport_prompt_011C.md
+?? rapport_prompt_011D.md
+?? rapport_prompt_012.md
+?? rapport_prompt_013.md

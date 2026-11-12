@@ -38,7 +38,7 @@
 ## 6. Décision : utilisation d'`ir.access` pour les règles par domaine
 
 - Décision : utiliser `ir.access` pour les restrictions basées sur des domaines.
-- Justification : mécanisme natif d'Odoo 20.
+- Justification : mécanisme natif d'Odoo 20. Le format `ir.access.csv` est `id,name,model_id,group_id/id,operation,domain`.
 - Alternative examinée : logique applicative personnalisée.
 - Statut : recommandé.
 
@@ -56,7 +56,32 @@
 - Alternative examinée : constantes Python.
 - Statut : recommandé.
 
-## 9. Points à arbitrer
+## 9. Décision : sécurité multi-niveaux
+
+- Décision : combiner l'isolation par société et l'isolation par dossier.
+- Justification : un champ `company_id` seul ne protège pas les documents natifs par dossier.
+- Alternative examinée : se baser uniquement sur le multi-société natif.
+- Statut : recommandé.
+
+## 10. Décision : définition du dossier comptable
+
+- Décision : le dossier est un objet métier indépendant de la société, du cabinet et de l'exercice.
+- Justification : permet le suivi, le transfert, la clôture et l'archivage sans confondre les périmètres.
+- Alternative examinée : équivalence dossier = société ou dossier = exercice.
+- Statut : recommandé.
+
+## 11. Décision : modèles de la première version
+
+| Modèle | Rôle | Nécessité en première version | Dépendances | Justification |
+|---|---|---|---|---|
+| `ca.accounting.folder` | Dossier comptable | Oui | `base` | Suivi métier non fourni par Odoo natif |
+| `ca.audit.log` | Journalisation sensible | Oui | `base` | Traçabilité des opérations sensibles |
+| `ca.referential` | Référentiels communs | Oui, version minimale | `base` | Formes juridiques et données de référence |
+| `ca.establishment` | Établissement ou site | Conditionnel | `base` | À créer si le besoin de site distinct est confirmé |
+| `ca.legal.form` | Forme juridique | Non en première version | `base` | Fusionné dans `ca.referential` |
+| `ca.config` | Paramètres | Non comme modèle séparé | `base` | Extension de `res.config.settings` |
+
+## 12. Points à arbitrer
 
 - Relation exacte entre dossier comptable et société.
 - Gestion des établissements.
@@ -64,3 +89,34 @@
 - Droits d'accès par dossier.
 - Extension future du portail client.
 - Validation des référentiels juridiques et fiscaux algériens.
+
+## 13. Implémentation réelle
+
+- `ca.accounting.folder` est le premier modèle métier implémenté.
+- Les contraintes sont implémentées côté serveur.
+- La sécurité utilise `ir.access` avec des domaines par société et par dossier.
+- Les tests automatisés couvrent les contraintes et l'isolation.
+- Les cabinets, mandats, exercices, établissements et journalisation sont reportés.
+
+
+## 13. Statut des fonctionnalités
+
+### Implémentées
+
+- `ca.accounting.folder`
+- sécurité de base par société et par dossier
+- vues et menus
+- tests automatisés
+
+### Futures
+
+- cabinets et mandats
+- portail client
+- extensions comptables
+
+### Reportées
+
+- `ca.audit.log`
+- `ca.referential`
+- `ca.establishment`
+- gestion des exercices

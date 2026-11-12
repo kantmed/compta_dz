@@ -1,0 +1,12 @@
+Fichiers modifiés pendant le Prompt 013-D :
+- ca_core/tests/test_accounting_folder.py
+
+Fichiers créés :
+- livrables/prompt_013D/ca_core_prompt013D_audit.zip
+- livrables/prompt_013D/rapport_prompt013D.md
+- livrables/prompt_013D/resultats_tests_prompt013D.txt
+- livrables/prompt_013D/git_status_prompt013D.txt
+- livrables/prompt_013D/inventaire_fichiers_prompt013D.txt
+
+Fichiers supprimés :
+- aucun

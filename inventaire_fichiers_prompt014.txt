@@ -1,0 +1,19 @@
+Fichiers examinés :
+- ca_core/docs/architecture_metier_ca_core.md
+- ca_core/docs/decisions_architecture_ca_core.md
+- ca_core/models/accounting_folder.py
+- ca_core/__manifest__.py
+- Rapports précédents du projet
+
+Fichiers créés ou mis à jour :
+- rapport_prompt_014.md
+- diagramme_prompt_014.mmd
+- decisions_prompt_014.md
+- inventaire_fichiers_prompt014.txt
+- git_status_prompt014.txt
+
+Fichiers modifiés :
+- aucun fichier de code
+
+Fichiers supprimés :
+- aucun

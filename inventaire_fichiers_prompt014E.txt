@@ -1,0 +1,14 @@
+Fichiers créés :
+- ca_core/docs/architecture_metier_ca_core.md
+- ca_core/docs/decisions_architecture_ca_core.md
+- ca_core/docs/diagramme_architecture_ca_core.mmd
+- rapport_prompt_014E.md
+- inventaire_fichiers_prompt014E.txt
+- git_status_prompt014E.txt
+- ca_architecture_prompt014E_audit.zip
+
+Fichiers modifiés :
+- aucun fichier Python, XML, CSV ou manifeste
+
+Fichiers supprimés :
+- aucun

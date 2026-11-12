@@ -8,4 +8,9 @@
     'application': False,
     'installable': True,
     'auto_install': False,
+    'data': [
+        'security/ca_core_groups.xml',
+        'security/ir.access.csv',
+        'views/accounting_folder_views.xml',
+    ],
 }

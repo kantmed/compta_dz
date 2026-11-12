@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="group_ca_core_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="comment">Consultation of authorized accounting folders.</field>
+        </record>
+
+        <record id="group_ca_core_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="comment">Management of authorized accounting folders.</field>
+            <field name="implied_ids" eval="[(4, ref('ca_core.group_ca_core_user'))]"/>
+        </record>
+
+        <record id="group_ca_core_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="comment">Functional administration of ca_core.</field>
+            <field name="implied_ids" eval="[(4, ref('ca_core.group_ca_core_manager'))]"/>
+        </record>
+
+    </data>
+</odoo>

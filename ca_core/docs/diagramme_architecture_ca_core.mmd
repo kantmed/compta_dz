@@ -1,0 +1,59 @@
+classDiagram
+    class ResCompanyClient {
+        <<res.company>>
+        +name
+        +currency_id
+        +parent_id
+    }
+    class ResCompanyFirm {
+        <<res.company>>
+        +name
+        +currency_id
+        +parent_id
+    }
+    class ResPartner {
+        +name
+        +is_company
+    }
+    class ResUser {
+        +login
+        +company_id
+        +company_ids
+        +partner_id
+    }
+    class CaAccountingFolder {
+        +name
+        +code
+        +company_id
+        +manager_id
+        +collaborator_ids
+        +state
+    }
+    class CaAccountingMandate {
+        +firm_company_id
+        +folder_id
+        +client_company_id
+        +mission_type
+        +start_date
+        +end_date
+        +status
+        +is_primary
+        +manager_id
+    }
+
+    ResCompanyClient "1" --> "0..*" CaAccountingFolder : owns
+    ResCompanyClient "1" --> "0..*" ResCompanyClient : branches
+    ResPartner "1" --> "0..1" ResCompanyClient : partner
+    ResUser "1" --> "1" ResPartner : partner_id
+    ResUser "0..*" --> "0..*" ResCompanyClient : allowed companies
+    CaAccountingFolder "0..*" --> "1" ResUser : manager
+    CaAccountingFolder "0..*" --> "0..*" ResUser : collaborators
+    CaAccountingFolder "1" --> "0..*" CaAccountingMandate : mandates
+    CaAccountingMandate "0..*" --> "1" ResCompanyClient : client company
+    CaAccountingMandate "0..*" --> "1" ResCompanyFirm : firm
+    CaAccountingMandate "0..*" --> "1" CaAccountingFolder : folder
+    CaAccountingMandate "0..*" --> "1" ResUser : manager
+
+    note for ResCompanyClient "Société cliente (res.company)"
+    note for ResCompanyFirm "Cabinet comptable (res.company)"
+    note for CaAccountingMandate "Modèle futur — non développé"

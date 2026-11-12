@@ -1,0 +1,23 @@
+Fichiers créés ou modifiés pendant le Prompt 013-B :
+- ca_core/models/accounting_folder.py
+- ca_core/tests/test_accounting_folder.py
+- ca_core/docs/architecture_metier_ca_core.md
+- ca_core/docs/decisions_architecture.md
+- rapport_prompt_013B.md
+
+Fichiers de sécurité :
+- ca_core/security/ca_core_groups.xml
+- ca_core/security/ir.access.csv
+
+Fichiers de vues :
+- ca_core/views/accounting_folder_views.xml
+
+Livrables :
+- livrables/prompt_013B/ca_core_prompt013B_audit.zip
+- livrables/prompt_013B/rapport_prompt_013B.md
+- livrables/prompt_013B/resultats_tests_prompt013B.txt
+- livrables/prompt_013B/git_status_prompt013B.txt
+- livrables/prompt_013B/inventaire_fichiers_prompt013B.txt
+
+Fichiers supprimés :
+- aucun

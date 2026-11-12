@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_ca_accounting_folder_user,ca.accounting.folder user,ca.accounting.folder,ca_core.group_ca_core_user,r,"[('company_id', 'in', company_ids), '|', ('manager_id', '=', user.id), ('collaborator_ids', 'in', user.id)]"
+access_ca_accounting_folder_manager,ca.accounting.folder manager,ca.accounting.folder,ca_core.group_ca_core_manager,crud,"[('company_id', 'in', company_ids)]"
+access_ca_accounting_folder_admin,ca.accounting.folder admin,ca.accounting.folder,ca_core.group_ca_core_admin,crud,"[('company_id', 'in', company_ids)]"

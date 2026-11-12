@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ca_accounting_folder_list" model="ir.ui.view">
+        <field name="name">ca.accounting.folder.list</field>
+        <field name="model">ca.accounting.folder</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="company_id"/>
+                <field name="manager_id"/>
+                <field name="state"/>
+                <field name="opening_date"/>
+                <field name="closing_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ca_accounting_folder_form" model="ir.ui.view">
+        <field name="name">ca.accounting.folder.form</field>
+        <field name="model">ca.accounting.folder</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" invisible="state != 'draft'"/>
+                    <button name="action_review" type="object" string="Review" invisible="state != 'active'"/>
+                    <button name="action_close" type="object" string="Close" invisible="state not in ('active', 'review')"/>
+                    <button name="action_archive" type="object" string="Archive" invisible="state != 'closed'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,review,closed,archived"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Identification">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="state" readonly="1"/>
+                        </group>
+                        <group string="Company and manager">
+                            <field name="company_id"/>
+                            <field name="manager_id" domain="[('company_ids', 'in', [company_id])]"/>
+                        </group>
+                    </group>
+                    <group string="Collaborators">
+                        <field name="collaborator_ids" widget="many2many_tags" domain="[('company_ids', 'in', [company_id])]"/>
+                    </group>
+                    <group string="Dates">
+                        <field name="opening_date"/>
+                        <field name="closing_date"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ca_accounting_folder_search" model="ir.ui.view">
+        <field name="name">ca.accounting.folder.search</field>
+        <field name="model">ca.accounting.folder</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="company_id"/>
+                <field name="manager_id"/>
+                <filter name="my_folders" string="My Folders"
+                        domain="[('manager_id', '=', uid)]"/>
+                <filter name="my_active_folders" string="My Active Folders"
+                        domain="[('manager_id', '=', uid), ('state', '=', 'active')]"/>
+                <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ca_accounting_folder" model="ir.actions.act_window">
+        <field name="name">Accounting Folders</field>
+        <field name="res_model">ca.accounting.folder</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_ca_core_root" name="Comptabilité Algérienne" sequence="10"/>
+    <menuitem id="menu_ca_accounting_folder" name="Dossiers comptables"
+              parent="menu_ca_core_root" action="action_ca_accounting_folder" sequence="10"/>
+</odoo>
