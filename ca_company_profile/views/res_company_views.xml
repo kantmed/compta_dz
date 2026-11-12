@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_company_form_company_profile" model="ir.ui.view">
+        <field name="name">res.company.form.company.profile</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_info']" position="after">
+                <page string="Company Profile" name="company_profile">
+                    <group>
+                        <group string="Legal Profile">
+                            <field name="ca_legal_form_id"/>
+                            <field name="ca_trade_name"/>
+                            <field name="ca_incorporation_date"/>
+                            <field name="ca_activity_start_date"/>
+                            <field name="ca_share_capital"/>
+                            <field name="ca_company_duration"/>
+                            <field name="ca_legal_state"/>
+                            <field name="ca_legal_description"/>
+                        </group>
+                        <group string="Administrative Identifiers">
+                            <field name="ca_nif"/>
+                            <field name="ca_nif_date"/>
+                            <field name="ca_nif_expiry"/>
+                            <field name="ca_nif_authority"/>
+                            <field name="ca_nif_document_ids" widget="many2many_binary"/>
+                            <field name="ca_nis"/>
+                            <field name="ca_nis_date"/>
+                            <field name="ca_nis_expiry"/>
+                            <field name="ca_nis_authority"/>
+                            <field name="ca_nis_document_ids" widget="many2many_binary"/>
+                            <field name="ca_rc"/>
+                            <field name="ca_rc_date"/>
+                            <field name="ca_rc_expiry"/>
+                            <field name="ca_rc_authority"/>
+                            <field name="ca_rc_document_ids" widget="many2many_binary"/>
+                            <field name="ca_tax_article"/>
+                            <field name="ca_tax_article_date"/>
+                            <field name="ca_tax_article_expiry"/>
+                            <field name="ca_tax_article_authority"/>
+                            <field name="ca_casnos_id"/>
+                            <field name="ca_casnos_date"/>
+                            <field name="ca_casnos_expiry"/>
+                            <field name="ca_cnas_id"/>
+                            <field name="ca_cnas_date"/>
+                            <field name="ca_cnas_expiry"/>
+                            <field name="ca_approval_number"/>
+                            <field name="ca_approval_date"/>
+                            <field name="ca_approval_expiry"/>
+                            <field name="ca_approval_authority"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Fiscal Information">
+                            <field name="ca_tax_regime"/>
+                            <field name="ca_vat_regime"/>
+                            <field name="ca_vat_registered"/>
+                            <field name="ca_vat_start_date"/>
+                            <field name="ca_vat_end_date"/>
+                            <field name="ca_tax_office"/>
+                            <field name="ca_tax_inspection"/>
+                            <field name="ca_fiscal_notes"/>
+                        </group>
+                        <group string="Administrative Information">
+                            <field name="ca_administrative_email"/>
+                            <field name="ca_administrative_phone"/>
+                            <field name="ca_administrative_website"/>
+                            <field name="ca_legal_representative_id"/>
+                            <field name="ca_legal_representative_function"/>
+                            <field name="ca_administrative_notes"/>
+                            <field name="ca_administrative_document_ids" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
