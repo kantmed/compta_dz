@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_accounting_folder" model="ir.ui.view">
+        <field name="name">account.move.form.accounting.folder</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id'][1]" position="after">
+                <field name="ca_accounting_folder_id"
+                       options="{'no_create': True}"
+                       domain="[('company_id', '=', company_id)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_list_accounting_folder" model="ir.ui.view">
+        <field name="name">account.move.list.accounting.folder</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="ca_accounting_folder_id" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_search_accounting_folder" model="ir.ui.view">
+        <field name="name">account.move.search.accounting.folder</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_move_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="ca_accounting_folder_id"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Accounting Folder" name="group_folder" context="{'group_by': 'ca_accounting_folder_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
